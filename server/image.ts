@@ -3,9 +3,8 @@
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-
-});
+  apiKey: "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"
+})
 
 export async function generateImages(x: string) {
   const image = await openai.images.generate(
