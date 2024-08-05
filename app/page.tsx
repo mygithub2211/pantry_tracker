@@ -13,7 +13,7 @@ import { generateImages } from "../server/image";
 // Define types for inventory items
 interface InventoryItem {
   name: string;
-  picture: string;
+  //picture: string;
   quantity: number;
 }
 
@@ -35,8 +35,8 @@ export default function Home() {
       const data = doc.data() as DocumentData;
       inventoryList.push({
         name: doc.id,
-        picture: data.picture,
-        quantity: data.quantity || 0, // Default to 0 if quantity is not defined
+        //picture: data.picture
+        quantity: data.quantity || 0 // Default to 0 if quantity is not defined
       });
     });
     setInventory(inventoryList);
