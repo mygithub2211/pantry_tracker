@@ -13,7 +13,6 @@ import { generateImages } from "../server/image";
 // Define types for inventory items
 interface InventoryItem {
   name: string;
-  //picture: string;
   quantity: number;
 }
 
@@ -35,7 +34,6 @@ export default function Home() {
       const data = doc.data() as DocumentData;
       inventoryList.push({
         name: doc.id,
-        //picture: data.picture
         quantity: data.quantity || 0 // Default to 0 if quantity is not defined
       });
     });
@@ -53,11 +51,10 @@ export default function Home() {
     }
 
     if (docSnap.exists()) {
-      const data = docSnap.data() as { quantity: number /*picture: string*/ };
-      await setDoc(docRef, { quantity: data.quantity + quantityToAdd /*picture: data.picture*/ }); // quantity: and picture: are the name for fields in a document
+      const data = docSnap.data() as { quantity: number};
+      await setDoc(docRef, { quantity: data.quantity + quantityToAdd }); // quantity: and picture: are the name for fields in a document
     } else {
-      //const img = await generateImages(item);
-      await setDoc(docRef, { quantity: quantityToAdd /*picture: img*/ });
+      await setDoc(docRef, { quantity: quantityToAdd});
     }
     await updateInventory();
   };
@@ -67,11 +64,11 @@ export default function Home() {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      const data = docSnap.data() as { quantity: number /*picture: string*/ };
+      const data = docSnap.data() as { quantity: number};
       if (data.quantity === 1) {
         await deleteDoc(docRef);
       } else {
-        await setDoc(docRef, { quantity: data.quantity - 1 /*picture: data.picture*/ });
+        await setDoc(docRef, { quantity: data.quantity - 1 });
       }
     }
     await updateInventory();
@@ -204,7 +201,7 @@ export default function Home() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {inventory.map(({ name, picture, quantity }) => (
+                  {inventory.map(({ name, quantity }) => (
                     <TableRow key={name} sx={{ borderBottom: "1px solid #000" }}>
                       <TableCell component="th" scope="row">
                         {/*{picture ? (<img src={picture} alt={name} width={50} height={50} style={{ objectFit: "cover" }} />) : ("No Image")}*/}
