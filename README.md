@@ -1,3 +1,3 @@
-@auhtor Phat Tran
+@author Phat Tran
 
 https://pantry-tracker-eight-gamma.vercel.app/
