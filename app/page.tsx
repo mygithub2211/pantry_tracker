@@ -1,6 +1,6 @@
 // Home.tsx
 "use client"
-import React, { useState, useEffect, KeyboardEvent } from "react";
+import React, { useState, useEffect } from "react";
 import { firestore } from "@/firebase";
 import { DocumentData } from "firebase/firestore";
 import { Box, Button, Stack, TextField, Typography, Paper, Drawer, List, ListItem, ListItemText, Divider } from "@mui/material";
@@ -8,7 +8,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from
 import MenuIcon from '@mui/icons-material/Menu';
 import { collection, deleteDoc, doc, getDoc, getDocs, query, setDoc } from "firebase/firestore";
 import { RecipeSearch } from "./RecipeSearch";
-import { generateImages } from "../server/image";
+
 
 // Define types for inventory items
 interface InventoryItem {
